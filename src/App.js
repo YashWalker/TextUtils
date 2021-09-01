@@ -9,8 +9,8 @@ function App() {
     
 
   <Navbar title="Text Utils" aboutText="About Us "/>
-  <div className="container">
-  <TextForm heading="Enter the Text To Analyze" my-3/>
+  <div className="container my-4">
+  <TextForm heading="Enter the Text To Analyze" />
 
   </div>
 
