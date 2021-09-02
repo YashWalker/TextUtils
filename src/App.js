@@ -3,6 +3,12 @@ import Navbar from './Components/Navbar';
 import TextForm from './Components/TextForm';
 import React, { useState } from 'react';
 import Alert from './Components/Alert';
+import About from './Components/About';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 
 
 function App() {
@@ -19,7 +25,6 @@ function App() {
       }, 2000);
   }
 
-
   const toggleMode = ()=>{
     if(mode === 'light'){
       setMode('dark');
@@ -33,20 +38,22 @@ function App() {
     }
   }
 
-
-
-
   return (
-    <>
-    
-
+  <>
+  <Router>  
   <Navbar title="Text Utils" aboutText="About Us " mode={mode} toggleMode={toggleMode}/>
   <Alert alert={alert}/>
   <div className="container my-4">
-  <TextForm heading="Enter the Text To Analyze" showAlert={showAlert} mode={mode}/>
-
+  <Switch>
+          <Route exact path="/about">
+            <About />
+          </Route>
+          <Route exact path="/">
+            <TextForm heading="Enter the Text To Analyze" showAlert={showAlert} mode={mode}/>
+          </Route>
+        </Switch>
   </div>
-
+  </Router>
   </>
   );
 }
