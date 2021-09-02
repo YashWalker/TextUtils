@@ -11,20 +11,41 @@ export default function TextForm(props) {
         let newText= text.toLowerCase();
         setText(newText)
     }
+    const reClick = ()=>{
+        let newText= text.split("").reverse().join("");
+        setText(newText)
+    }
+    const coClick = ()=>{
+        navigator.clipboard.writeText(text); 
+    }
+    const clClick = ()=>{
+        let newText= "";
+        setText(newText)
+    }
+    const rmClick = ()=>{
+        let newText = text.split(/[ ]+/);
+        setText(newText.join(" "));
+    }
+
     const onChangeText = (event)=>{
         setText(event.target.value)
     }
     return (
         <>
-        <div>
+        <div className="container" style={{color: props.mode==='dark'?'white':'#042743'}}>
             <h2>{props.heading}</h2>
             <div className="mb-3">
-                <textarea className="form-control" id="myText" value={text} onChange={onChangeText}rows="8"></textarea>
+                <textarea className="form-control" id="myText" value={text} onChange={onChangeText}  style={{backgroundColor: props.mode==='dark'?'#13466e':'white', color: props.mode==='dark'?'white':'#042743'}} rows="8"></textarea>
             </div>
-            <button className="btn btn-success" onClick={upClick}>Covert to UpperCase</button>
+            <button className="btn btn-success mx-2" onClick={upClick}>Covert to UpperCase</button>
             <button className="btn btn-success mx-2" onClick={loClick}>Covert to LowerCase</button>
+            <button className="btn btn-success mx-2" onClick={reClick}>Reverse the Text</button>
+            <button className="btn btn-success mx-2" onClick={rmClick}>Remove Extra Spaces</button>
+            <button className="btn btn-success mx-2" onClick={coClick}>Copy Text</button>
+            <button className="btn btn-success mx-2" onClick={clClick}>Clear Text</button>
+            
         </div>
-        <div className="Container my-5">
+        <div className="Container my-5" style={{color: props.mode==='dark'?'white':'#042743'}}>
             <h4>Summery</h4>
             <p>{text.split(" ").length} Words and {text.length} Characters</p> 
             <p>{ 0.008*text.split(" ").length} Minutes to Read (Average)</p>
