@@ -53,7 +53,7 @@ export default function TextForm(props) {
         </div>
         <div className="Container my-5" style={{color: props.mode==='dark'?'white':'#042743'}}>
             <h4>Summery</h4>
-            <p>{text.split(" ").length} Words and {text.length} Characters</p> 
+            <p>{text.split(" ").filter((words)=>{return words.length!==0}).length} Words and {text.length} Characters</p> 
             <p>{ 0.008*text.split(" ").length} Minutes to Read (Average)</p>
             <h4>Preview</h4>
             <p>{text}</p>
