@@ -6,25 +6,31 @@ export default function TextForm(props) {
     const upClick = ()=>{
         let newText= text.toUpperCase();
         setText(newText)
+        props.showAlert("Text Changed into UpperCase" , "success")
     }
     const loClick = ()=>{
         let newText= text.toLowerCase();
         setText(newText)
+        props.showAlert("Text Changed into LowerCase" , "success")
     }
     const reClick = ()=>{
         let newText= text.split("").reverse().join("");
         setText(newText)
+        props.showAlert("Text Changed into Reverse" , "success")
     }
     const coClick = ()=>{
         navigator.clipboard.writeText(text); 
+        props.showAlert("Text is Copied!" , "success")
     }
     const clClick = ()=>{
         let newText= "";
         setText(newText)
+        props.showAlert("Text is Cleared!" , "success")
     }
     const rmClick = ()=>{
         let newText = text.split(/[ ]+/);
         setText(newText.join(" "));
+        props.showAlert("Extra Spaces is Removed!" , "success")
     }
 
     const onChangeText = (event)=>{
